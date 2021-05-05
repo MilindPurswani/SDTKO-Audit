@@ -49,5 +49,5 @@ class TMOWrapper:
 
 
 t = TMOWrapper()
-test_domains = [{'sub':'takeover4.xve.io','res':'totallynonexistingdomain2.com'}, {'sub':'takeover5.xve.io', 'res':'takeover4.xve.io'}]
+test_domains = [{'sub':'takeover4.xve.io','res':'totallynonexistingdomain2.com'}, {'sub':'takeover5.xve.io', 'res':'takeover4.xve.io'}, {'sub':'takeover1.xve.io', 'res':''}]
 t.check_takeover(test_domains)
