@@ -30,13 +30,14 @@ class TMOWrapper:
 		try:
 			p = subprocess.Popen(['takemeon','-json-output','-mdns', '8.8.8.8'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 			output, error = p.communicate(str.encode(subdomain_string))
+			# check if TMO output was null, if it was, retun an empty list
 			if output == b'null\n':
 				return []
 			output_string = output.decode("utf-8")
 			output_json = json.loads(output_string)
+			# Adding a dictionary parameter 'tko' as per specifications
 			for i in output_json:
 				i['tko'] = True
-			# print(output_json)
 			return output_json
 			
 		except FileNotFoundError as e:
