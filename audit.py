@@ -3,10 +3,15 @@ from Notifications import *
 from NucleiWrapper import *
 from Report import *
 from TMOWrapper import *
-
+import sys
 
 if __name__ == '__main__':
-    domain_name = "xve.io"
+
+    
+    if(len(sys.argv) < 2):
+        print("[*] Usage: python3 audit.py your_domain_name.com", file=sys.stderr)
+        exit(1)
+    domain_name = sys.argv[1]
     notify_bot = Notifications()
     notify_bot.send_debug_notification("Starting new subdomain audit at "+str(datetime.datetime.now()))
     print("[*] Starting SDTKO Audit")

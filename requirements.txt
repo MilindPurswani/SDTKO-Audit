@@ -1,0 +1,4 @@
+requests
+slack_logger
+pandas
+jinja2
