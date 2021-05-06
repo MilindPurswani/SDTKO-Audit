@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/sandstone/bootstrap.css">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">{{ title }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+      </nav>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-7">Subdomain Takeover Report for domain {{domain_name}}</h1>
+        <p class="lead">This report contains Automated scan report for subdomain takeover. A subdomain takeover is possible when a domain/host points to a service that is not currently in use. A hacker can claim the resource pointed to by these domains and host content of their choice. This report contains potential subdomain takeovers. Kindly note that the results may be deemed false positive upon manual verification.</p>
+        <hr class="my-4">
+        <p>Scan date: {{date}}</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="https://developer.mozilla.org/en-US/docs/Web/Security/Subdomain_takeovers" role="button">Learn more</a>
+        </p>
+    </div>
+    <div class="container">
+        <h2>Potential Subdomain Takeovers</h2>
+        {{ subdomain_takeover_table }}
+    </div>
+</body>
+</html>

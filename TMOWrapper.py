@@ -39,6 +39,7 @@ class TMOWrapper:
 			for i in output_json:
 				i['tko'] = True
 				i['name'] = "Dangling CNAME"
+				i['sub'] = i.pop('domain')
 			return output_json
 			
 		except FileNotFoundError as e:
