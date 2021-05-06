@@ -13,7 +13,7 @@ class TMOWrapper:
 	def __init__(self):
 		status = subprocess.getstatusoutput('takemeon')[0]
 		if(status != 0):
-			print("Error: takemeon not found on the system")
+			print("[!] Error: takemeon not found on the system")
 			exit(1)
 
 	"""
@@ -30,38 +30,34 @@ class TMOWrapper:
 		try:
 			p = subprocess.Popen(['takemeon','-json-output','-mdns', '8.8.8.8'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 			output, error = p.communicate(str.encode(subdomain_string))
+			# check if TMO output was null, if it was, retun an empty list
 			if output == b'null\n':
 				return []
 			output_string = output.decode("utf-8")
 			output_json = json.loads(output_string)
+			# Adding a dictionary parameter 'tko' as per specifications
 			for i in output_json:
 				i['tko'] = True
-			# print(output_json)
+				i['name'] = "Dangling CNAME"
 			return output_json
 			
 		except FileNotFoundError as e:
-			print("Unable to locate takemeon during execution")
+			print("[!] Unable to locate takemeon during execution")
 		except IOError as e:
 			if e.errno == errno.EPIPE or e.errno == errno.EINVAL:
 				# Stop loop on "Invalid pipe" or "Invalid argument".
 				# No sense in continuing with broken pipe.
-				print("Error: invalid input received")
+				print("[!] Error: invalid input received")
 				exit(1)
 			else:
 				# Raise any other error.
 				raise
 
-
-
-			
-
-
-
 # Example Usage:
 t = TMOWrapper()
 test_domains2 = [{'sub':'test.google.com'}]
-test_domains = [{'sub':'takeover4.xve.io','res':'totallynonexistingdomain2.com'}, {'sub':'takeover5.xve.io', 'res':'takeover4.xve.io'}, {'sub':'takeover1.xve.io', 'res':''}]
-result = t.check_takeover(test_domains2)
+test_domains = [{'sub': '_domainconnect.xve.io', 'resolution': '_domainconnect.gd.domaincontrol.com'}, {'sub': 'mail.xve.io', 'resolution': 'domain.mail.yandex.net'}, {'sub': 'takeover1.xve.io', 'resolution': 'non-existing-domain.github.io'}, {'sub': 'takeover2.xve.io', 'resolution': 'non-existing-bucket.s3.amazonaws.com'}, {'sub': 'takeover3.xve.io', 'resolution': 'totallynonexistingdomain.com'}, {'sub': 'takeover4.xve.io', 'resolution': 'totallynonexistingdomain2.com'}, {'sub': 'takeover5.xve.io', 'resolution': 'takeover4.xve.io'}, {'sub': 'www.xve.io', 'resolution': 'xve.io'}]
+result = t.check_takeover(test_domains)
 if len(result) != 0:
 	print(result)
 else:
