@@ -50,6 +50,3 @@ class Report:
 			f.write(html_out)
 		
 
-
-r = Report('xve.io')
-r.create_report([{'resolution': 'totallynonexistingdomain.com', 'tko': True, 'name': 'Dangling CNAME', 'sub': 'takeover3.xve.io'}, {'resolution': 'totallynonexistingdomain2.com', 'tko': True, 'name': 'Dangling CNAME', 'sub': 'takeover4.xve.io'}, {'resolution': 'takeover4.xve.io', 'tko': True, 'name': 'Dangling CNAME', 'sub': 'takeover5.xve.io'}])

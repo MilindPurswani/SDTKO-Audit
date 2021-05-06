@@ -11,30 +11,19 @@ class Notifications:
 	def __init__(self):
 		try:
 			self.slack_webhook_url = os.environ['SLACK_WEBHOOK_URL']
+			self.logger = logging.getLogger("Update")
+			self.logger.setLevel(logging.DEBUG)
+			sh = SlackHandler(username='logger', icon_emoji=':robot_face:', url=self.slack_webhook_url)
+			sh.setLevel(logging.DEBUG)
+			f = SlackFormatter()
+			sh.setFormatter(f)
+			self.logger.addHandler(sh)
 		except KeyError:
 			print("[!] SLACK_WEBHOOK_URL not set")
 			exit(1)
 	
 	def send_debug_notification(self, message):
-		logger = logging.getLogger("Update")
-		logger.setLevel(logging.DEBUG)
-		sh = SlackHandler(username='logger', icon_emoji=':robot_face:', url=self.slack_webhook_url)
-		sh.setLevel(logging.DEBUG)
-		f = SlackFormatter()
-		sh.setFormatter(f)
-		logger.addHandler(sh)
-		logger.debug(message)
+		self.logger.debug(message)
 	
 	def send_important_notification(self, message):
-		logger = logging.getLogger("Important!")
-		logger.setLevel(logging.DEBUG)
-		sh = SlackHandler(username='logger', icon_emoji=':robot_face:', url=self.slack_webhook_url)
-		sh.setLevel(logging.DEBUG)
-		f = SlackFormatter()
-		sh.setFormatter(f)
-		logger.addHandler(sh)
-		logger.info(message)
-
-n = Notifications()
-n.send_debug_notification("Test")
-n.send_important_notification("Important Notification")
+		self.logger.warning(message)
