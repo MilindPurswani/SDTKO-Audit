@@ -12,9 +12,12 @@ As an example, we have implemented `audit.py` that checks for subdomain takeover
 
 ## Features
 
-:white_check_mark: Checks for Subdomain Takeovers using Nuclei Scanner and takemeon
+:white_check_mark: Checks for Subdomain Takeovers using Nuclei Scanner and takemeon.
+
 :white_check_mark: Integration with Cloudflare API.
+
 :white_check_mark: Support for sending notifications via slack.
+
 :white_check_mark: Allows generating a report with custom template `Jinja2`
 
 
