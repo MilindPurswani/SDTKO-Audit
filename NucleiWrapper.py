@@ -1,6 +1,7 @@
 import subprocess
 import os
 import json 
+
 class NucleiWrapper():
 	"""
     This function will be used to check for Subdomain takeovers using Nuclei Scanner pointing to a 3rd party service
