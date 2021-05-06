@@ -6,7 +6,7 @@ from TMOWrapper import *
 
 
 if __name__ == '__main__':
-    domain_name = "milindpurswani.com"
+    domain_name = "xve.io"
     notify_bot = Notifications()
     notify_bot.send_debug_notification("Starting new subdomain audit at "+str(datetime.datetime.now()))
     print("[*] Starting SDTKO Audit")
