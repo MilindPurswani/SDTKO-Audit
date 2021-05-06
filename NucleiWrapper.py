@@ -72,9 +72,3 @@ class NucleiWrapper():
 			else:
 				# Raise any other error.
 				raise
-
-# demo usage
-n = NucleiWrapper()
-test_domains2 = [{'sub':'test.google.com'}]
-test_domains = [{'sub': '_domainconnect.xve.io', 'resolution': '_domainconnect.gd.domaincontrol.com'}, {'sub': 'mail.xve.io', 'resolution': 'domain.mail.yandex.net'}, {'sub': 'takeover1.xve.io', 'resolution': 'non-existing-domain.github.io'}, {'sub': 'takeover2.xve.io', 'resolution': 'non-existing-bucket.s3.amazonaws.com'}, {'sub': 'takeover3.xve.io', 'resolution': 'totallynonexistingdomain.com'}, {'sub': 'takeover4.xve.io', 'resolution': 'totallynonexistingdomain2.com'}, {'sub': 'takeover5.xve.io', 'resolution': 'takeover4.xve.io'}, {'sub': 'www.xve.io', 'resolution': 'xve.io'}]
-result = n.check_takeover(test_domains)
