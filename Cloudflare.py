@@ -54,9 +54,3 @@ class Cloudflare:
 			exit(1)
 		return domain_list
 
-
-# Example Usage
-
-c = Cloudflare()
-data = c.get_cname_domains("xve.io")
-print(data)
