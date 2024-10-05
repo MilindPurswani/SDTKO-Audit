@@ -1,0 +1,16 @@
+{
+  "version": "2.2.0",
+  "summary": {
+    "title": "New Threat Model",
+    "owner": "Milind ",
+    "description": "System to retrieve a list of domain names and identify if anyone of them is a dangling subdomain",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [],
+    "diagramTop": 0,
+    "reviewer": "Milind",
+    "threatTop": 0
+  }
+}
